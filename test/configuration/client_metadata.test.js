@@ -305,7 +305,8 @@ describe('Client metadata validation', () => {
     rejects(this.title, ['web-custom-scheme://some'], undefined, {
       application_type: 'web',
     });
-    rejects(this.title, ['https://localhost'], undefined, {
+    // FIXME: add an option to override localhost
+    allows(this.title, ['https://localhost'], undefined, {
       application_type: 'web',
       grant_types: ['implicit', 'authorization_code'],
       response_types: ['code id_token'],
